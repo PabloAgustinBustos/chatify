@@ -7,6 +7,7 @@ const router = Router()
 
 router.use(arcjetProtection)
 
+router.get("/", (req, res) => res.json({message: "todo ok"}))
 router.post('/signup', signup)
 router.post('/login', login)
 router.post('/logout', logout)

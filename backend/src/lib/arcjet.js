@@ -1,5 +1,5 @@
 import arcjet, { shield, detectBot, slidingWindow } from "@arcjet/node";
-import { ENV } from "./env";
+import { ENV } from "./env.js";
 
 const aj = arcjet({
   key: ENV.ARCJET_KEY,
@@ -16,7 +16,7 @@ const aj = arcjet({
 
     slidingWindow({
       mode: "LIVE",
-      max: 100, // 10 request per minute
+      max: 5, // 10 request per minute
       interval: 60
     })
   ],

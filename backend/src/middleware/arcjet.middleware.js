@@ -1,4 +1,4 @@
-import aj from "../lib/arcjet";
+import aj from "../lib/arcjet.js";
 import { isSpoofedBot } from "@arcjet/inspect"
 
 export const arcjetProtection = async(req, res, next) => {
@@ -25,6 +25,7 @@ export const arcjetProtection = async(req, res, next) => {
       })
     }
 
+    console.log("todo ok")
     next()
   } catch(e) {
     console.log("Arcjet protection Error", e)
