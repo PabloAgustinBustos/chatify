@@ -39,13 +39,16 @@ export const sendMessage = async (req, res) => {
   const contactID = req.params.contactID
   const { text, image } = req.body
 
-  try {
-    let imageURL
+  if (!text && !image) return res.status(400).json({ message: 'text or image is required' })
+  if (myID.equals(contactID)) return res.status(400).json({ message: 'cannot send message to yourself' })
+  
+  const receiverExists = await User.exists({ _id: contactID })
 
-    if (image) {
-      const uploadResponse = await cloudinary.uploader.upload(image)
-      imageURL = uploadResponse.secure_url
-    }
+  if (!receiverExists) return res.status(404).json({ message: 'contact not found' })
+
+  try {
+    const uploadResponse = await cloudinary.uploader.upload(image)
+    const imageURL = uploadResponse.secure_url
 
     const newMessage = new Message({
       senderID: myID,

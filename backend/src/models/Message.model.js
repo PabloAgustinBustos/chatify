@@ -13,7 +13,9 @@ export const messageSchema = new Schema({
   },
 
   text: {
-    type: String
+    type: String,
+    trim: true,
+    maxlength: 200
   },
 
   image: {
