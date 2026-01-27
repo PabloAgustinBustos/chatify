@@ -1,7 +1,10 @@
 import aj from "../lib/arcjet.js";
 import { isSpoofedBot } from "@arcjet/inspect"
+import { ENV } from "../lib/env.js";
 
 export const arcjetProtection = async(req, res, next) => {
+  if (ENV.ARCJET_ENV === 'development') return next()
+
   try {
     // Arcjet toma una decisión en base a las reglas establecidas
     const decision = await aj.protect(req)
@@ -26,9 +29,9 @@ export const arcjetProtection = async(req, res, next) => {
     }
 
     console.log("todo ok")
-    next()
+    return next()
   } catch(e) {
     console.log("Arcjet protection Error", e)
-    next()
+    return next()
   }
 }
