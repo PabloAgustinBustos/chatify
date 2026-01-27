@@ -16,7 +16,7 @@ app.use(express.json({ limit: '10mb' }))
 app.use(cookieParser())
 
 app.use('/api/auth', authRoutes)
-//app.use('/api/messages', messageRoutes)
+app.use('/api/messages', messageRoutes)
 
 if (ENV.NODE_ENV == 'production') {
   // Establecemos que los archivos estáticos estarán en el dist de frontend
