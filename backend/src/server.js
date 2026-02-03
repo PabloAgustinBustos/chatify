@@ -6,12 +6,14 @@ import authRoutes from './routes/auth.route.js'
 import messageRoutes from './routes/message.route.js'
 import { connectDB } from './lib/db.js'
 import { ENV } from './lib/env.js'
+import cors from "cors"
 
 dotenv.config()
 
 const app = express()
 const __dirname = path.resolve()
 
+app.use(cors({ origin: ENV.CLIENT_URL, credentials: true }))
 app.use(express.json({ limit: '10mb' }))
 app.use(cookieParser())
 
