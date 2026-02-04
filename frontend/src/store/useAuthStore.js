@@ -82,6 +82,16 @@ const useAuthStore = create(set => ({
     } finally {
       set({ isLogin: false })
     }
+  },
+
+  logout: async () => {
+    try {
+      await fetch(`${BASE_URL}/auth/logout`, { method: 'POST', credentials: "include" })
+      set({ authUser: null })
+    } catch (e) {
+      toast.error('Error logging out')
+      console.log("logout error", e)
+    }
   }
 }))
 
