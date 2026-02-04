@@ -8,6 +8,8 @@ import bcrypt from 'bcryptjs'
 export const signup = async(req, res) => {
   const { fullname, email, password } = req.body
 
+  console.log(req.body)
+
   // Validaciones
   if (!fullname || !email || !password) {
     return res.status(400).json({
@@ -59,7 +61,7 @@ export const signup = async(req, res) => {
       })
 
       try {
-        sendWelcomeEmail(savedUser.email, savedUser.fullname, ENV.CLIENT_URL)
+        await sendWelcomeEmail(savedUser.email, savedUser.fullname, ENV.CLIENT_URL)
       } catch(e) {
         console.error('Failed to send welcome email')
       }
