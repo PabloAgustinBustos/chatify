@@ -1,18 +1,37 @@
-import React from 'react'
+import { Eye, EyeClosed, Mail, UserRound } from 'lucide-react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const SignupForm = () => {
+  const [showPassword, setShowPassword] = useState(false)
+
+  const togglePassword = e => {
+    e.preventDefault()
+    setShowPassword(!showPassword)
+  }
+
   return (
     <form className='w-96 flex flex-col gap-5'>
       <fieldset className="fieldset">
         <label className="label text-gray-300">Fullname</label>
-        <input type="text" className="input" placeholder="John Doe" />
+        <label className='input flex items-center gap-2'>
+          <UserRound />
+          <input type="text" className="w-full" placeholder="John Doe" />
+        </label>
 
         <label className="label text-gray-300">Email</label>
-        <input type="email" className="input" placeholder="example@gmail.com" />
+        <label className='input flex items-center gap-2'>
+          <Mail />
+          <input type="email" className="w-full" placeholder="Example@gmail.com" />
+        </label>
 
         <label className="label text-gray-300">Password</label>
-        <input type="password" className="input" placeholder="Password" />
+        <label className='input flex items-center gap-2'>
+          <button onClick={togglePassword}>
+            {showPassword ? <Eye /> : <EyeClosed/>}
+          </button>
+          <input type={showPassword ? 'text' : 'password'} className="w-full" placeholder="Password" />
+        </label>
       </fieldset>
 
       <div className='flex flex-col items-center gap-2'>
