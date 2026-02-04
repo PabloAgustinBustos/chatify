@@ -2,6 +2,7 @@ import { Eye, EyeClosed, Mail, UserRound } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import useAuthStore from '../../store/useAuthStore'
+import Loader from '../ui/Loader'
 
 const SignupForm = () => {
   const [data, setData] = useState({
@@ -37,7 +38,6 @@ const SignupForm = () => {
   const handleSubmit = async e => {
     e.preventDefault()
 
-    console.log('registrando')
     await signUp(data)
   }
 
@@ -87,7 +87,9 @@ const SignupForm = () => {
       </fieldset>
 
       <div className='flex flex-col items-center gap-2'>
-        <button className="w-full btn btn-info mt-4" disabled={!isReady}>Signup</button>
+        <button className="w-full btn btn-info mt-4" disabled={!isReady || isSigningUp}>
+          {isSigningUp ? <Loader/> : 'Sign up'}
+        </button>
         <span className='text-gray-300'>Already have an account? <Link className='text-sky-300 hover:text-sky-200 transition-colors' to='/login'>Login</Link></span>
       </div>
     </form>
