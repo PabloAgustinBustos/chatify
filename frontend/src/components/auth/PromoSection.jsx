@@ -10,7 +10,7 @@ const PromoSection = ({img, txt, badges}) => {
       <section className='flex flex-col gap-2'>
         <h2 className='font-extrabold text-blue-300'>{txt}</h2>
         <div className='flex justify-center gap-3 w-full'>
-          {badges.map(badge => <span className='badge badge-outline badge-info'>{badge}</span>)}
+          {badges.map(badge => <span key={badge} className='badge badge-outline badge-info'>{badge}</span>)}
         </div>
       </section>
     </aside>
