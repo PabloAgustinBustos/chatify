@@ -35,10 +35,10 @@ const SignupForm = () => {
     }))
   }
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault()
 
-    await signUp(data)
+    signUp(data)
   }
 
   return (

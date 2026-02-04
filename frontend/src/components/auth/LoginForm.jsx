@@ -33,10 +33,10 @@ const LoginForm = () => {
     }))
   }
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault()
 
-    await login(data)
+    login(data)
   }
 
   return (
