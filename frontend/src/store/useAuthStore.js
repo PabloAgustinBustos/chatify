@@ -77,8 +77,8 @@ const useAuthStore = create(set => ({
         toast.error(authUser.message)
       }
     } catch (e) {
-      toast.error('error signing up')
-      console.log('Error signing up', e)
+      toast.error('error login')
+      console.log('Error login', e)
     } finally {
       set({ isLogin: false })
     }
