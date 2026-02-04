@@ -11,7 +11,9 @@ const useAuthStore = create(set => ({
 
   checkAuth: async () => {
     try {
-      const res = await fetch(`${BASE_URL}/auth/check`)
+      const res = await fetch(`${BASE_URL}/auth/check`, {
+        credentials: 'include',
+      })
       const authUser = await res.json()
 
       if (res.status !== 401 && res.status !== 400) set({ authUser })
@@ -33,6 +35,7 @@ const useAuthStore = create(set => ({
         headers: {
           'Content-Type': 'application/json'
         },
+        credentials: 'include',
         body: JSON.stringify(data)
       })
       const authUser = await res.json()
@@ -62,6 +65,7 @@ const useAuthStore = create(set => ({
         headers: {
           'Content-Type': 'application/json'
         },
+        credentials: 'include',
         body: JSON.stringify(data)
       })
       const authUser = await res.json()
