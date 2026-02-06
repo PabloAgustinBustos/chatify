@@ -7,7 +7,7 @@ const Chat = () => {
 
   return (
     <div className='z-10 w-[1400px] h-[650px] 2xl:w-[1850px] 2xl:h-[950px] flex items-center justify-center bg-slate-800 rounded-2xl'>
-      <aside className='w-1/4 h-full p-4 gap-5 flex flex-col'>
+      <aside className='w-1/4 h-full grid grid-rows-[auto_auto_1fr] p-4 gap-4'>
         <header className='flex items-center justify-between  bg-opacity-20'>
           <div className='flex-[2] flex items-center gap-5'>
             <img src="profile-placeholder.png" className='size-14 rounded-full' alt="" />
@@ -30,23 +30,29 @@ const Chat = () => {
 
         <section className='flex flex-col gap-2 overflow-y-scroll'>
           {[{name: 'juan', message: 'Hola me llamo juan'}, {name: 'lucas', message: 'jejejejejejej soy un mensaje'}, {name: 'oscar', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}, {name: 'juan', message: 'Hola me llamo juan'}, {name: 'lucas', message: 'jejejejejejej soy un mensaje'}, {name: 'oscar', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}, {name: 'juan', message: 'Hola me llamo juan'}, {name: 'lucas', message: 'jejejejejejej soy un mensaje'}, {name: 'oscar', message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}].map(({name, message}) => (
-            <article className='h-20 p-2 flex flex-shrink-0 gap-2 hover:bg-slate-700/40 hover:cursor-pointer transition-colors duration-75 rounded-2xl overflow-hidden'>
-              <div className='flex-1 avatar avatar-online'>
-                <div className="size-auto rounded-full">
-                  <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
-                </div>
+            <article
+            key={name + message}
+            className="select-none h-20 p-2 flex items-center gap-3 hover:bg-slate-700/40 cursor-pointer transition rounded-2xl"
+          >
+            {/* AVATAR */}
+            <div className="avatar online shrink-0">
+              <div className="w-12 h-12 rounded-full">
+                <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
               </div>
-
-              <div className='overflow-hidden grow'>
-                <h2 className='text-xl font-bold text-slate-100'>{name}</h2>
-                <h3 className='truncate'>{message} aaaaaaaaaaaa</h3>
-              </div>
-
-              <div className='flex-1 flex flex-col justify-evenly items-center'>
-                <h3>Horario</h3>
-                <div className="badge badge-primary badge-lg">1</div>
-              </div>
-            </article>
+            </div>
+      
+            {/* TEXTO */}
+            <div className="overflow-hidden grow">
+              <h2 className="text-xl font-bold text-slate-100">{name}</h2>
+              <p className="truncate text-slate-300">{message}</p>
+            </div>
+      
+            {/* META */}
+            <div className="shrink-0 flex flex-col justify-evenly items-center">
+              <span className="text-sm text-slate-400">Horario</span>
+              <div className="badge badge-primary badge-lg">1</div>
+            </div>
+          </article>
           ))}
         </section>
       </aside>
