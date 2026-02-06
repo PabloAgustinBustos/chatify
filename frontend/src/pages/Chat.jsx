@@ -62,7 +62,7 @@ const Chat = () => {
           </div>
         </header>
 
-        <section className='row-span-8 overflow-y-auto p-2 flex flex-col gap-4 bg-red-300 bg-opacity-0'>
+        <section className='row-span-8 overflow-y-auto p-2 space-y-4 bg-red-300 bg-opacity-0'>
           {[
             {
               id: 1,
@@ -185,7 +185,7 @@ const Chat = () => {
               time: '12:12',
             }
           ].map((message, index) => (
-            <div key={message.id} className={`chat chat-${message.isMine ? 'end' : 'start'}`}>
+            <div key={message.id} className={`chat ${message.isMine ? 'chat-end' : 'chat-start'}`}>
               <div className={`chat-bubble ${message.isMine ? 'chat-bubble-primary' : 'bg-slate-700 text-slate-100'} mb-1 relative px-4 py-2 pr-12`}>
                 <p className="leading-snug">{message.text}</p>
 
