@@ -6,7 +6,7 @@ export const getAllContacts = async (req, res) => {
   const myID = req.user._id
 
   try {
-    const users = await User.find({ _id: { $ne: myID } }).select('-password')
+    const users = await User.find({ _id: { $ne: myID } }).select('profilePic fullname bio')
 
     res.status(200).json(users)
   } catch(e) {
@@ -89,7 +89,7 @@ export const getChats = async (req, res) => {
 
     const chats = await User.find({ _id: {
       $in: contactsID
-    } }).select('-password')
+    } }).select('profilePic fullname')
 
     return res.status(200).json(chats)
   } catch (e) {

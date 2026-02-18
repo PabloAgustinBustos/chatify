@@ -22,6 +22,12 @@ export const userSchema = new Schema({
     type: String,
     default: ''
   },
+
+  bio: {
+    type: String,
+    maxlength: 100,
+    default: ""
+  }
 }, {
   timestamps: true
 })
