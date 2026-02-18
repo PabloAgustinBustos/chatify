@@ -1,6 +1,4 @@
 import React from 'react'
-import useAuthStore from '../store/useAuthStore'
-import { Bell, Image, LogOut, Send, Smile } from 'lucide-react'
 import Sidebar from "../components/chat/sidebar"
 import Conversation from "../components/chat/conversation"
 
