@@ -2,7 +2,7 @@ import React from 'react'
 
 const SidebarChatItem = ({name, message, isOnline, time}) => {
   return (
-    <article key={name + message} className="select-none h-20 p-2 flex items-center gap-3 hover:bg-slate-700/40 cursor-pointer transition rounded-2xl">
+    <article className="select-none h-20 p-2 flex items-center gap-3 hover:bg-slate-700/40 cursor-pointer transition rounded-2xl">
       <div className="avatar online shrink-0">
         <div className="w-12 h-12 rounded-full">
           <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />

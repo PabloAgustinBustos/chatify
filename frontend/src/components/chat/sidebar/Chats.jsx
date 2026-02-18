@@ -1,7 +1,12 @@
 import React from 'react'
 import Chat from './SidebarChatItem'
+import useChatStore from '../../../store/useChatStore'
 
 const Chats = () => {
+  const activeTab = useChatStore(store => store.activeTab)
+
+  console.log(activeTab)
+
   const chatsMock = [
     { name: 'juan', message: 'Hola me llamo juan', time: '12:22', isOnline: true },
     { name: 'lucas', message: 'jejejejejeje soy un mensaje', time: '12:18', isOnline: false },
@@ -19,7 +24,7 @@ const Chats = () => {
   return (
     <section className='flex flex-col gap-2 overflow-y-scroll'>
       {chatsMock.map(props => (
-        <Chat {...props}/>
+        <Chat key={props.name + props.message} {...props}/>
       ))}
     </section>
   )
