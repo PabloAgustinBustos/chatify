@@ -20,12 +20,14 @@ export const getMessagesByUserID = async (req, res) => {
   const contactID = req.params.contactID
 
   try {
-    const messages = await Message.find({ 
+    let messages = await Message.find({ 
       $or: [
         { senderID: myID, receiverID: contactID },
         { senderID: contactID, receiverID: myID }
       ]
-    }, null).limit(10).sort({ createdAt: -1 })
+    }, null).limit(3).sort({ createdAt: -1 })
+
+    messages = messages.reverse()
 
     return res.status(200).json(messages)
   } catch(e) {
